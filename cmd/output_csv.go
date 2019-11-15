@@ -47,6 +47,7 @@ func NewOutputCsv() (oc *OutputCsv) {
 func NewOutputCsvFromFile(file *os.File) (oc *OutputCsv) {
 	oc = new(OutputCsv)
 	oc.writer = csv.NewWriter(file)
+	oc.writer.Comma = ';'
 	return
 }
 

@@ -184,8 +184,8 @@ goscsv delim [--input INPUT_DELIMITER] [--output OUTPUT_DELIMITER] FILE
 
 Arguments:
 
-- `--input` (shorthand `-i`, optional) The delimiter used in the input. Defaults to `,`.
-- `--output` (shorthand `-o`, optional) The delimiter used in the output. Defaults to `,`.
+- `--input` (shorthand `-i`, optional) The delimiter used in the input. Defaults to `;`.
+- `--output` (shorthand `-o`, optional) The delimiter used in the output. Defaults to `;`.
 
 ### describe
 

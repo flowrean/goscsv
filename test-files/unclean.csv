@@ -1,12 +1,12 @@
-Short,Headers
-Line,Too,Long
-"Quoted,Line",Long
-Line,"Even",Longer,
-Line,Short
+Short;Headers
+Line;Too;Long
+"Quoted;Line";Long
+Line;"Even";Longer;
+Line;Short
 Shortest
-,,,
-After,Empty",Row
-Row,"With
-New Line",
-,,
-,,,
+;;;
+After;Empty";Row
+Row;"With
+New Line";
+;;
+;;;

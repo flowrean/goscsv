@@ -30,6 +30,7 @@ func NewInputCsv(filename string) (ic *InputCsv, err error) {
 	}
 	ic.bufReader = bufio.NewReader(ic.file)
 	ic.reader = csv.NewReader(ic.bufReader)
+	ic.reader.Comma = ';'
 	err = ic.handleBom()
 	return
 }
