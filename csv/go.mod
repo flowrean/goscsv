@@ -1,1 +1,1 @@
-module github.com/DataFoxCo/gocsv/csv
+module github.com/flowrean/goscsv/csv

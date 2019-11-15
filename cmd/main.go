@@ -77,13 +77,13 @@ func usageForSubcommand(subcommand Subcommand) string {
 
 // Keep this in sync with the README.
 func usage() string {
-	usage := "GoCSV is a command line CSV processing tool.\n"
+	usage := "GoSCSV is a command line CSV processing tool.\n"
 	usage += fmt.Sprintf("Version: %s (%s)\n", VERSION, GIT_HASH)
 	usage += "Subcommands:\n"
 	for _, subcommand := range subcommands {
 		usage += usageForSubcommand(subcommand)
 	}
-	usage += "See https://github.com/DataFoxCo/gocsv for more documentation."
+	usage += "See https://github.com/flowrean/goscsv for more documentation."
 	return usage
 }
 

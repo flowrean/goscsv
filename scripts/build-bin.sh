@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 BIN_DIR=$(pwd)/bin
-EXECUTABLE=gocsv
+EXECUTABLE=goscsv
 
 GIT_HASH=$(git rev-parse HEAD)
 VERSION=$(cat VERSION)
-LD_FLAGS="-X github.com/DataFoxCo/gocsv/cmd.VERSION=${VERSION} -X github.com/DataFoxCo/gocsv/cmd.GIT_HASH=${GIT_HASH}"
+LD_FLAGS="-X github.com/flowrean/goscsv/cmd.VERSION=${VERSION} -X github.com/flowrean/goscsv/cmd.GIT_HASH=${GIT_HASH}"
 
 rm -rf ${BIN_DIR}
 mkdir -p ${BIN_DIR}

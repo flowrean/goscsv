@@ -1,11 +1,11 @@
-# GoCSV
+# GoSCSV
 
 Command line CSV processing tool based on [csvkit](https://csvkit.readthedocs.io). But faster and less memory intensive. And written in Go.
 
 To install on Apple OS X, open a Terminal window and run
 
 ```shell
-curl -s https://raw.githubusercontent.com/DataFoxCo/gocsv/latest/scripts/install-latest-darwin-amd64.sh | bash
+curl -s https://raw.githubusercontent.com/flowrean/goscsv/latest/scripts/install-latest-darwin-amd64.sh | bash
 ```
 
 ### Table of Contents
@@ -56,7 +56,7 @@ Subcommands:
 - [xlsx](#xlsx) - Convert sheets of a XLSX file to CSV.
 - [zip](#zip) - Zip multiple CSVs into one CSV.
 
-To view the usage of `gocsv` at the command line, use the `help` subcommand (i.e. `gocsv help`). This will also print out the version of the `gocsv` binary as well as the hash of the git commit of this repository on which the binary was built. To view only the version and git hash, use the `version` subcommand (i.e. `gocsv version`).
+To view the usage of `goscsv` at the command line, use the `help` subcommand (i.e. `goscsv help`). This will also print out the version of the `goscsv` binary as well as the hash of the git commit of this repository on which the binary was built. To view only the version and git hash, use the `version` subcommand (i.e. `goscsv version`).
 
 ## Subcommands
 
@@ -69,7 +69,7 @@ Add a column to a CSV.
 Usage:
 
 ```shell
-gocsv add [--prepend] [--name NAME] [--template TEMPLATE] FILE
+goscsv add [--prepend] [--name NAME] [--template TEMPLATE] FILE
 ```
 
 Arguments:
@@ -82,12 +82,12 @@ Note that the `--template` argument for this subcommand is a string providing a 
 
 For example, if your CSV has a column named `Name`, you can do
 ```shell
-gocsv add -t "Hello, {{.Name}}! You are number {{.index}} in line."
+goscsv add -t "Hello, {{.Name}}! You are number {{.index}} in line."
 ```
 
 For multi-word columns there is a slightly different syntax. Say you have a column called `Full Name`. Then the following template would work:
 ```shell
-gocsv add -t 'Hello {{index . "Full Name"}}! You are number {{.index} in line.'
+goscsv add -t 'Hello {{index . "Full Name"}}! You are number {{.index} in line.'
 ```
 
 For further reference on the options available to you in a template, see the [text/template](https://golang.org/pkg/text/template/) documentation.
@@ -101,7 +101,7 @@ Append (or prepend) a column of incrementing integers to each row. This can be h
 Usage:
 
 ```shell
-gocsv autoincrement [--prepend] [--name NAME] [--seed SEED] FILE
+goscsv autoincrement [--prepend] [--name NAME] [--seed SEED] FILE
 ```
 
 Arguments:
@@ -117,7 +117,7 @@ Remove the header from a CSV
 Usage:
 
 ```shell
-gocsv behead [-n N] FILE
+goscsv behead [-n N] FILE
 ```
 
 Arguments:
@@ -131,7 +131,7 @@ Add a header row to a CSV
 Usage:
 
 ```shell
-gocsv cap --names NAMES [--truncate-names] [--default-name DEFAULT_NAME] FILE
+goscsv cap --names NAMES [--truncate-names] [--default-name DEFAULT_NAME] FILE
 ```
 
 Arguments:
@@ -149,12 +149,12 @@ The subcommand will error if:
 
 Clean a CSV of common formatting issues. Currently this consists of making sure all rows are the same length (padding short rows and trimming long ones) and removing empty rows at the end.
 
-Note that this subcommand, along with other subcommands, will include a newline at the end of the last line of the outputted CSV. This is because `gocsv` assumes that every row in a CSV (or other-delimited text file) will end in a new line.
+Note that this subcommand, along with other subcommands, will include a newline at the end of the last line of the outputted CSV. This is because `goscsv` assumes that every row in a CSV (or other-delimited text file) will end in a new line.
 
 Usage:
 
 ```shell
-gocsv clean [--verbose] [--no-trim] [--strip-bom] [--excel] [--numbers] FILE
+goscsv clean [--verbose] [--no-trim] [--strip-bom] [--excel] [--numbers] FILE
 ```
 
 Arguments:
@@ -179,7 +179,7 @@ Change the delimiter being used for a CSV.
 Usage:
 
 ```bash
-gocsv delim [--input INPUT_DELIMITER] [--output OUTPUT_DELIMITER] FILE
+goscsv delim [--input INPUT_DELIMITER] [--output OUTPUT_DELIMITER] FILE
 ```
 
 Arguments:
@@ -194,7 +194,7 @@ Get basic information about a CSV. This will output the number of rows and colum
 Usage
 
 ```shell
-gocsv describe FILE
+goscsv describe FILE
 ```
 
 ### dimensions
@@ -206,7 +206,7 @@ Get the dimensions of a CSV.
 Usage
 
 ```shell
-gocsv dimensions [--csv] FILE
+goscsv dimensions [--csv] FILE
 ```
 
 Arguments:
@@ -220,7 +220,7 @@ Filter a CSV by rows whose columns match some criterion.
 Usage:
 
 ```shell
-gocsv filter [--columns COLUMNS] [--equals STR] [--regex REGEX] [--gt N] [--gte N] [--lt N] [--lte N] [--exclude] FILE
+goscsv filter [--columns COLUMNS] [--equals STR] [--regex REGEX] [--gt N] [--gte N] [--lt N] [--lte N] [--exclude] FILE
 ```
 
 Arguments:
@@ -241,7 +241,7 @@ Extract the first _N_ rows from a CSV.
 Usage:
 
 ```shell
-gocsv head [-n N] FILE
+goscsv head [-n N] FILE
 ```
 
 Arguments:
@@ -255,7 +255,7 @@ View the headers of a CSV along with the index of each header.
 Usage:
 
 ```bash
-gocsv headers [--csv] FILE
+goscsv headers [--csv] FILE
 ```
 
 Arguments:
@@ -269,7 +269,7 @@ Join two CSVs using an inner (default), left, right, or outer join.
 Usage:
 
 ```shell
-gocsv join --columns COLUMNS [--left] [--right] [--outer] LEFT_FILE RIGHT_FILE
+goscsv join --columns COLUMNS [--left] [--right] [--outer] LEFT_FILE RIGHT_FILE
 ```
 
 Arguments:
@@ -288,7 +288,7 @@ Get the number of columns in a CSV.
 Usage:
 
 ```shell
-gocsv ncol FILE
+goscsv ncol FILE
 ```
 
 ### nrow
@@ -298,7 +298,7 @@ Get the number of rows in a CSV.
 Usage:
 
 ```shell
-gocsv nrow FILE
+goscsv nrow FILE
 ```
 
 ### rename
@@ -308,7 +308,7 @@ Rename the headers of a CSV.
 Usage:
 
 ```shell
-gocsv rename --columns COLUMNS --names NAMES FILE
+goscsv rename --columns COLUMNS --names NAMES FILE
 ```
 
 Arguments:
@@ -323,7 +323,7 @@ Replace values in cells by regular expression.
 Usage:
 
 ```shell
-gocsv replace [--columns COLUMNS] --regex REGEX --repl REPLACEMENT FILE
+goscsv replace [--columns COLUMNS] --regex REGEX --repl REPLACEMENT FILE
 ```
 
 Arguments:
@@ -342,7 +342,7 @@ Sample rows from a CSV
 Usage
 
 ```shell
-gocsv sample -n NUM_ROWS [--replace] [--seed SEED] FILE
+goscsv sample -n NUM_ROWS [--replace] [--seed SEED] FILE
 ```
 
 Arguments:
@@ -358,7 +358,7 @@ Select (or exclude) columns from a CSV
 Usage:
 
 ```shell
-gocsv select --columns COLUMNS [--exclude] FILE
+goscsv select --columns COLUMNS [--exclude] FILE
 ```
 
 Arguments:
@@ -373,7 +373,7 @@ Sort a CSV by multiple columns, with or without type inference. The currently su
 Usage:
 
 ```shell
-gocsv sort --columns COLUMNS [--reverse] [--no-inference] FILE
+goscsv sort --columns COLUMNS [--reverse] [--no-inference] FILE
 ```
 
 Arguments:
@@ -389,7 +389,7 @@ Split a CSV into multiple files.
 Usage:
 
 ```shell
-gocsv split --max-rows N [--filename-base FILENAME] FILE
+goscsv split --max-rows N [--filename-base FILENAME] FILE
 ```
 
 Arguments:
@@ -403,7 +403,7 @@ Run SQL queries on CSVs.
 
 Usage:
 ```shell
-gocsv sql --query QUERY FILE [FILES]
+goscsv sql --query QUERY FILE [FILES]
 ```
 
 Arguments:
@@ -427,7 +427,7 @@ Stack multiple CSVs to create a larger CSV. Optionally include an indication of 
 Usage:
 
 ```shell
-gocsv stack [--filenames] [--groups GROUPS] [--group-name GROUP_NAME] FILE [FILES]
+goscsv stack [--filenames] [--groups GROUPS] [--group-name GROUP_NAME] FILE [FILES]
 ```
 
 Arguments:
@@ -447,7 +447,7 @@ Get some basic statistics on a CSV.
 Usage:
 
 ```shell
-gocsv stats FILE
+goscsv stats FILE
 ```
 
 ### tail
@@ -457,7 +457,7 @@ Extract the last _N_ rows from a CSV.
 Usage:
 
 ```shell
-gocsv tail [-n N] FILE
+goscsv tail [-n N] FILE
 ```
 
 Arguments:
@@ -471,17 +471,17 @@ Transpose a CSV.
 Usage:
 
 ```shell
-gocsv tranpose FILE
+goscsv tranpose FILE
 ```
 
 ### tsv
 
-Transform a CSV into a TSV. It is shortand for `gocsv delim -o "\t" FILE`. This can very useful if you want to pipe the result to `pbcopy` (OS X) in order to paste it into a spreadsheet tool.
+Transform a CSV into a TSV. It is shortand for `goscsv delim -o "\t" FILE`. This can very useful if you want to pipe the result to `pbcopy` (OS X) in order to paste it into a spreadsheet tool.
 
 Usage:
 
 ```shell
-gocsv tsv FILE
+goscsv tsv FILE
 ```
 
 ### unique
@@ -493,7 +493,7 @@ Extract unique rows based upon certain columns.
 Usage:
 
 ```shell
-gocsv unique [--columns COLUMNS] [--sorted] [--count] FILE
+goscsv unique [--columns COLUMNS] [--sorted] [--count] FILE
 ```
 
 Arguments
@@ -509,7 +509,7 @@ Display a CSV in a pretty tabular format.
 Usage:
 
 ```shell
-gocsv view [-n N] [--max-width N] FILE
+goscsv view [-n N] [--max-width N] FILE
 ```
 
 Arguments:
@@ -527,7 +527,7 @@ Convert sheets of a XLSX file to CSV.
 Usage:
 
 ```shell
-gocsv xlsx [--list-sheets] [--dirname DIRNAME] [--sheet SHEET] FILE
+goscsv xlsx [--list-sheets] [--dirname DIRNAME] [--sheet SHEET] FILE
 ```
 
 Arguments:
@@ -545,7 +545,7 @@ Zip multiple CSVs into one CSV.
 Usage:
 
 ```shell
-gocsv zip FILE [FILES]
+goscsv zip FILE [FILES]
 ```
 
 Specifying a file by name `-` will read a CSV from standard input.
@@ -568,17 +568,17 @@ When referencing a column name that has whitespace, either escape the whitespace
 
 For example, if you have a column named `Hello World`,
 ```shell
-gocsv select -c "Hello World" test.csv
+goscsv select -c "Hello World" test.csv
 ```
 or
 ```shell
-gocsv select -c Hello\ World test.csv
+goscsv select -c Hello\ World test.csv
 ```
 
 When referencing multiple columns, specify column names as a comma-delimited list with no spaces between the columns. If any of the column names have whitespace, enclose the entire list in a single set of quotes. 
 
 ```shell
-gocsv select -c "Hello World,Foo Bar" test.csv
+goscsv select -c "Hello World,Foo Bar" test.csv
 ```
 
 ## Regular Expression Syntax
@@ -593,10 +593,10 @@ Because all of the subcommands support receiving a CSV from standard input, you 
 
 ```shell
 cat test-files/left-table.csv \
-  | gocsv join --left --columns LID,RID test-files/right-table.csv \
-  | gocsv filter --columns XYZ --regex "[ev]e-\d$" \
-  | gocsv select --columns LID,XYZ \
-  | gocsv sort --columns LID,XYZ
+  | goscsv join --left --columns LID,RID test-files/right-table.csv \
+  | goscsv filter --columns XYZ --regex "[ev]e-\d$" \
+  | goscsv select --columns LID,XYZ \
+  | goscsv sort --columns LID,XYZ
 ```
 
 ### Pipelining Support
@@ -643,89 +643,89 @@ cat test-files/left-table.csv \
 ##### Copy Values
 
 ```shell
-gocsv tsv test-files/left-table.csv | pbcopy
+goscsv tsv test-files/left-table.csv | pbcopy
 ```
 
 ##### Reorder Columns
 
 ```shell
-gocsv select --columns 2,1 test-files/left-table.csv
+goscsv select --columns 2,1 test-files/left-table.csv
 ```
 
 ##### Duplicate Columns
 
 ```shell
-gocsv select --columns 1,1,2,2 test-files/left-table.csv
+goscsv select --columns 1,1,2,2 test-files/left-table.csv
 ```
 
 ##### VLOOKUP aka Join
 
 ```shell
-gocsv join --left --columns LID,RID test-files/left-table.csv test-files/right-table.csv
+goscsv join --left --columns LID,RID test-files/left-table.csv test-files/right-table.csv
 ```
 
 ##### Distinct Column Values
 
 ```shell
-gocsv select --columns LID test-files/left-table.csv | gocsv behead | sort | uniq
+goscsv select --columns LID test-files/left-table.csv | goscsv behead | sort | uniq
 ```
 
 ##### Count of Distinct Column Values
 
 ```shell
-gocsv select --columns LID test-files/left-table.csv | gocsv behead | sort | uniq -c | sort -nr
+goscsv select --columns LID test-files/left-table.csv | goscsv behead | sort | uniq -c | sort -nr
 ```
 
 ##### Extract Rows Matching Regular Expression
 
 ```shell
-gocsv filter --columns ABC --regex "-1$" test-files/left-table.csv
+goscsv filter --columns ABC --regex "-1$" test-files/left-table.csv
 ```
 
 ##### Extract Rows with Blank Values in Column
 
 ```shell
-gocsv filter --columns Stringer --regex "^$" test-files/stats.csv
+goscsv filter --columns Stringer --regex "^$" test-files/stats.csv
 ```
 If you also want to match on cells that have only whitespace, you can use a regular expression like `"^s*$"`.
 
 ##### Replace Content in Cells By Regular Expression
 
 ```shell
-gocsv replace --columns ABC --regex "^(.*)-(\d)$" -i --repl "\$2-\$1" test-files/left-table.csv
+goscsv replace --columns ABC --regex "^(.*)-(\d)$" -i --repl "\$2-\$1" test-files/left-table.csv
 ```
 
 ##### Sort by Multiple Columns
 
 ```shell
-gocsv sort --columns LID,ABC --reverse test-files/left-table.csv
+goscsv sort --columns LID,ABC --reverse test-files/left-table.csv
 ```
 
 ##### Combine Multiple CSVs
 
 ```shell
-gocsv stack --groups "Primer Archivo,Segundo Archivo,Tercer Archivo" --group-name "Orden de Archivo" test-files/stack-1.csv test-files/stack-2.csv test-files/stack-3.csv
+goscsv stack --groups "Primer Archivo,Segundo Archivo,Tercer Archivo" --group-name "Orden de Archivo" test-files/stack-1.csv test-files/stack-2.csv test-files/stack-3.csv
 ```
 
 To do the same via pipelining through standard input,
 
 ```shell
-cat test-files/stack-1.csv | gocsv stack --groups "Primer Archivo,Segundo Archivo,Tercer Archivo" --group-name "Orden de Archivo" - test-files/stack-2.csv test-files/stack-3.csv
+cat test-files/stack-1.csv | goscsv stack --groups "Primer Archivo,Segundo Archivo,Tercer Archivo" --group-name "Orden de Archivo" - test-files/stack-2.csv test-files/stack-3.csv
 ```
 
 ##### Create a Column from a Template
 
 ```shell
-cat test-files/stats.csv | gocsv add -t "Row {{.index}}: {{if eq .Boolean \"T\"}}{{.Floater}}{{else}}{{.Integer}}{{end}}" -name "Integer or Floater"
+cat test-files/stats.csv | goscsv add -t "Row {{.index}}: {{if eq .Boolean \"T\"}}{{.Floater}}{{else}}{{.Integer}}{{end}}" -name "Integer or Floater"
 ```
 
 ## Debugging
 
-To enable debugging mode when running a `gocsv` command, specify the `--debug` command line argument to any subcommand (other than `gocsv help` and `gocsv version`). Any errors will then also print out a stack trace.
+To enable debugging mode when running a `goscsv` command, specify the `--debug` command line argument to any subcommand (other than `goscsv help` and `goscsv version`). Any errors will then also print out a stack trace.
 
 ## Installation
 
-For the latest pre-built binaries, see the [Latest Release](https://github.com/DataFoxCo/gocsv/releases/tag/latest) page.
+For the latest pre-built binaries, see the [Latest Release](https://github.com/flowrean/goscsv/releases/tag/latest) page.
 
 ### Apple OS X
 
@@ -734,49 +734,49 @@ For the latest pre-built binaries, see the [Latest Release](https://github.com/D
 Open a Terminal window and paste the following command:
 
 ```shell
-/bin/bash <(curl -s https://raw.githubusercontent.com/DataFoxCo/gocsv/latest/scripts/install-latest-darwin-amd64.sh)
+/bin/bash <(curl -s https://raw.githubusercontent.com/flowrean/goscsv/latest/scripts/install-latest-darwin-amd64.sh)
 ```
 
-This will install `gocsv` at `/usr/local/bin/gocsv`.
+This will install `goscsv` at `/usr/local/bin/goscsv`.
 
 #### Detailed Version
 
-To install the pre-built binary for Apple OS X, download the `gocsv-darwin-amd64.zip` file. It should download into your `~/Downloads` directory. To install it, open a Terminal window and do the following:
+To install the pre-built binary for Apple OS X, download the `goscsv-darwin-amd64.zip` file. It should download into your `~/Downloads` directory. To install it, open a Terminal window and do the following:
 
 ```shell
 cd ~/Downloads
-unzip gocsv-darwin-amd64.zip
-mv gocsv-darwin-amd64/gocsv /usr/local/bin
-rmdir gocsv-darwin-amd64
+unzip goscsv-darwin-amd64.zip
+mv goscsv-darwin-amd64/goscsv /usr/local/bin
+rmdir goscsv-darwin-amd64
 ```
 
 To verify that it has installed, open a _new_ Terminal window and run
 
 ```shell
-gocsv help
+goscsv help
 ```
 
-You should see the `gocsv` help message.
+You should see the `goscsv` help message.
 
 ### Linux
 
-Installing the pre-built binary for Linux is very similar to installing the binary for Apple OS X. First, download `gocsv-linux-amd64.zip`. Assuming this downloads to your `~/Downloads` directory, open a Terminal window and run the following commands:
+Installing the pre-built binary for Linux is very similar to installing the binary for Apple OS X. First, download `goscsv-linux-amd64.zip`. Assuming this downloads to your `~/Downloads` directory, open a Terminal window and run the following commands:
 
 ```shell
 cd ~/Downloads
-unzip gocsv-linux-amd64.zip
-mv gocsv-linux-amd64/gocsv /usr/local/bin
-rmdir gocsv-linux-amd64
+unzip goscsv-linux-amd64.zip
+mv goscsv-linux-amd64/goscsv /usr/local/bin
+rmdir goscsv-linux-amd64
 ```
 
 To verify that it has installed, open a _new_ Terminal window and run
 
 ```shell
-gocsv help
+goscsv help
 ```
 
-You should see the `gocsv` help message.
+You should see the `goscsv` help message.
 
 ### Windows
 
-Download `gocsv-windows-amd64.zip`. Then good luck.
+Download `goscsv-windows-amd64.zip`. Then good luck.

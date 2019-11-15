@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-BINARY_DIRNAME="gocsv-darwin-amd64"
+BINARY_DIRNAME="goscsv-darwin-amd64"
 ZIP_FILENAME="${BINARY_DIRNAME}.zip"
-ZIP_URL="https://github.com/DataFoxCo/gocsv/releases/download/latest/${ZIP_FILENAME}"
+ZIP_URL="https://github.com/flowrean/goscsv/releases/download/latest/${ZIP_FILENAME}"
 TMP_DIR=$(mktemp -d)
 INSTALL_DIR="/usr/local/bin"
-INSTALL_LOCATION="${INSTALL_DIR}/gocsv"
+INSTALL_LOCATION="${INSTALL_DIR}/goscsv"
 
 COLOR_GRAY=$(tput setaf 7)
 COLOR_RED=$(tput setaf 1)
@@ -25,7 +25,7 @@ touch ${INSTALL_LOCATION}
 if [ $? -eq 1 ]
 then
   mark_fail
-  echo "Unable to install gocsv."
+  echo "Unable to install goscsv."
   echo "You do not have permission to write to ${INSTALL_DIR}."
   echo "Change write permissions on that directory and try again."
   exit 1
@@ -42,7 +42,7 @@ unzip -q -d ${TMP_DIR} ${TMP_DIR}/${ZIP_FILENAME}
 mark_pass
 
 echo -n "Installing binary to ${INSTALL_LOCATION}... "
-mv ${TMP_DIR}/${BINARY_DIRNAME}/gocsv ${INSTALL_LOCATION}
+mv ${TMP_DIR}/${BINARY_DIRNAME}/goscsv ${INSTALL_LOCATION}
 mark_pass
 
 echo -n "Cleaning up... "
@@ -50,6 +50,6 @@ rm -r ${TMP_DIR}
 mark_pass
 
 echo ""
-echo "GoCSV has been successfully installed!"
+echo "GoSCSV has been successfully installed!"
 echo "Open a new Terminal window and run:"
-echo "  gocsv help"
+echo "  goscsv help"

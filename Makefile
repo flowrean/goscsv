@@ -2,7 +2,7 @@ BIN_DIR=bin
 DIST_DIR=dist
 CMD_DIR=cmd
 CSV_DIR=csv
-EXECUTABLE=gocsv
+EXECUTABLE=goscsv
 
 .DEFAULT_GOAL := bin
 .PHONY: cleanall dist bin

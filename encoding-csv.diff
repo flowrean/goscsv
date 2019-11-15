@@ -1,5 +1,5 @@
-Only in gocsv/src/csv: README.md
-diff -r go/src/encoding/csv/reader.go gocsv/src/csv/reader.go
+Only in goscsv/src/csv: README.md
+diff -r go/src/encoding/csv/reader.go goscsv/src/csv/reader.go
 19,21d18
 < // Blank lines are ignored. A line with only whitespace characters (excluding
 < // the ending newline character) is not considered a blank line.
@@ -13,7 +13,7 @@ diff -r go/src/encoding/csv/reader.go gocsv/src/csv/reader.go
 < 			line = nil
 < 			continue // Skip empty lines
 < 		}
-diff -r go/src/encoding/csv/reader_test.go gocsv/src/csv/reader_test.go
+diff -r go/src/encoding/csv/reader_test.go goscsv/src/csv/reader_test.go
 78a79
 > 			{""},
 79a81

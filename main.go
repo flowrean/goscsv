@@ -1,7 +1,7 @@
 package main
 
-import gocsv "github.com/DataFoxCo/gocsv/cmd"
+import goscsv "github.com/flowrean/goscsv/cmd"
 
 func main() {
-	gocsv.Main()
+	goscsv.Main()
 }

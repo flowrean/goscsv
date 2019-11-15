@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 DIST_DIR=$(pwd)/dist
-EXECUTABLE=gocsv
+EXECUTABLE=goscsv
 
 GIT_HASH=$(git rev-parse HEAD)
 VERSION=$(cat VERSION)
-LD_FLAGS="-X github.com/DataFoxCo/gocsv/cmd.VERSION=${VERSION} -X github.com/DataFoxCo/gocsv/cmd.GIT_HASH=${GIT_HASH}"
+LD_FLAGS="-X github.com/flowrean/goscsv/cmd.VERSION=${VERSION} -X github.com/flowrean/goscsv/cmd.GIT_HASH=${GIT_HASH}"
 
 rm -rf ${DIST_DIR}
 mkdir ${DIST_DIR}
 for os in darwin windows linux; do
   for arch in amd64; do
-    basename=gocsv-${os}-${arch}
+    basename=goscsv-${os}-${arch}
     mkdir ${DIST_DIR}/${basename}
     if [ "${os}" == "windows" ]; then
       binary="${EXECUTABLE}.exe"

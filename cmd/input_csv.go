@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/DataFoxCo/gocsv/csv"
+	"github.com/flowrean/goscsv/csv"
 )
 
 type InputCsv struct {
