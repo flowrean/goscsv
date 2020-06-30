@@ -10,7 +10,7 @@ func TestRunTranspose(t *testing.T) {
 		rows [][]string
 	}{
 		{[][]string{
-			[]string{"Name", "DataFox Intelligence, Inc."},
+			[]string{"Name", "DataFox Intelligence; Inc."},
 			[]string{"Website", "www.datafox.com"},
 		}},
 	}

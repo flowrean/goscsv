@@ -35,7 +35,7 @@ func TestReadAll(t *testing.T) {
 	}
 	expected := [][]string{
 		[]string{"Name", "Website"},
-		[]string{"DataFox Intelligence, Inc.", "www.datafox.com"},
+		[]string{"DataFox Intelligence; Inc.", "www.datafox.com"},
 	}
 	for i, row := range expected {
 		for j, cell := range row {
